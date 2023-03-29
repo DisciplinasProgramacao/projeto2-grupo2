@@ -40,6 +40,7 @@ public class Aresta {
         this.destino = destino;
         this.visitada = false;
     }
+    // Construtor para arestas sem peso.
     public Aresta(int destino){
         this.destino = destino;
         this.visitada = false;
