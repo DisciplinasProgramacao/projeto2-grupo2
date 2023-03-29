@@ -59,29 +59,6 @@ public class Grafo {
 	}
 
 	/**
-	 * Adiciona um vértice com o id especificado. Ignora a ação e retorna false se
-	 * já existir um vértice com este id
-	 * 
-	 * @param id O identificador do vértice a ser criado/adicionado
-	 * @return TRUE se houve a inclusão do vértice, FALSE se já existia vértice com
-	 *         este id
-	 */
-	public boolean addVertice(int id) {
-		Vertice novo = new Vertice(id);
-		return this.vertices.add(id, novo);
-	}
-
-	/**
-	 * Método que remove o vértice pelo id
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public Vertice removeVertice(int id) {
-		return this.vertices.remove(id);
-	}
-
-	/**
 	 * Classe que verifica se existe vértice pelo Id
 	 * 
 	 * @param idVertice
