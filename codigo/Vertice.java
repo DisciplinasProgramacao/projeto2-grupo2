@@ -48,9 +48,9 @@ public class Vertice {
     public int getId(){
         return this.id;
     }
-    
+    // Adiciona uma aresta não ponderada neste vértice para um destino
     public boolean addAresta(int destino){
-        return false;
+        return this.arestas.add(destino, new Aresta(destino));
     }
 
     /**
@@ -65,7 +65,7 @@ public class Vertice {
 
     
     public Aresta existeAresta(int destino){
-        return null;
+        return this.arestas.find(destino);
 
     }
     

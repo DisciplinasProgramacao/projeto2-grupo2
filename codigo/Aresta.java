@@ -40,6 +40,10 @@ public class Aresta {
         this.destino = destino;
         this.visitada = false;
     }
+    public Aresta(int destino){
+        this.destino = destino;
+        this.visitada = false;
+    }
 
     /**
      * Método de acesso para o peso da aresta
