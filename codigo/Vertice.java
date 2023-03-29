@@ -80,7 +80,7 @@ public class Vertice {
   
   
     public int grau(){
-        return Integer.MIN_VALUE;
+        return this.arestas.size();
     }
 
     /**
