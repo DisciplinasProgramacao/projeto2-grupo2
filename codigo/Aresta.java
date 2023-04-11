@@ -35,7 +35,7 @@ public class Aresta {
      * @param peso Peso da aresta
      * @param destino Vértice de destino
      */
-    public Aresta(int peso, int destino){
+    public Aresta(int destino, int peso){
         this.peso = peso;
         this.destino = destino;
         this.visitada = false;

@@ -77,9 +77,13 @@ public class Vertice {
     public Aresta removeAresta(int destino){
         return this.arestas.remove(destino);
     }
+    
   
-  
-    public int grau(){
+    public ABB<Aresta> getArestas() {
+		return arestas;
+	}
+
+	public int grau(){
         return this.arestas.size();
     }
 
