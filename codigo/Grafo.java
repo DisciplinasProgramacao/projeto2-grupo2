@@ -1,6 +1,7 @@
 package codigo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /*
@@ -69,27 +70,6 @@ public class Grafo {
 	}
 
 	/**
-	 * Adiciona uma aresta entre dois vértices do grafo, caso os dois vértices
-	 * existam no grafo. Caso a aresta já exista, ou algum dos vértices não existir,
-	 * o comando é ignorado e retorna FALSE.
-	 * 
-	 * @param origem  Vértice de origem
-	 * @param destino Vértice de destino
-	 * @param peso    Peso da aresta
-	 * @return TRUE se foi inserida, FALSE caso contrário
-	 */
-	public boolean addAresta(int origem, int destino, int peso) {
-		boolean adicionou = false;
-		Vertice saida = this.existeVertice(origem);
-		Vertice chegada = this.existeVertice(destino);
-		if (saida != null && chegada != null) {
-			adicionou = (saida.addAresta(destino, peso) && chegada.addAresta(origem, peso));
-		}
-		return adicionou;
-
-	}
-
-	/**
 	 * Método que verifica se existe aresta entre dois vértices
 	 * 
 	 * @param verticeA
@@ -124,7 +104,7 @@ public class Grafo {
 	 * @param vertices
 	 * @return
 	 */
-	public Grafo subGrafo(Lista<Integer> vertices) {
+	public Grafo subGrafo(Lista<Vertice> vertices) {
 		Grafo subgrafo = new Grafo("Subgrafo de " + this.nome);
 
 		return subgrafo;
@@ -153,5 +133,33 @@ public class Grafo {
 	public int ordem() {
 		return this.vertices.size();
 	}
-
+	
+	public List<Integer> buscaProfundidade(int id){
+	    List<Integer> listId = new ArrayList<Integer>();
+	    if(this.vertices.find(id).visitado()!=true){
+	        this.vertices.find(id).visitar();
+	        listId.add(id);
+	    }
+	    Aresta[] arestas = this.vertices.find(id).getArestas().allElements(new Aresta[ this.vertices.find(id).getArestas().size()]);
+	    for(Aresta aresta : arestas){
+	        if(aresta.visitada()!=true){
+	            aresta.visitar();
+	            Vertice vertice = this.vertices.find(aresta.destino());;
+	            if (vertice != null) {
+	                vertice.visitar();
+	            }
+	            List<Integer> subList = buscaProfundidade(aresta.destino());
+	            for(Integer subId : subList){
+	                listId.add(subId);
+	            }
+	        }
+	    }
+	    this.vertices.find(id).limparVisita();
+	    return listId;
+	}
+	public List<Vertice> getVertices() {
+		Vertice[] arrayVertices = this.vertices.allElements(new Vertice[this.vertices.size()]);
+		List<Vertice> listVertices = new ArrayList<>(Arrays.asList(arrayVertices));
+		return listVertices;
+	}
 }

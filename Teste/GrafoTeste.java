@@ -1,90 +1,78 @@
 package Teste;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
 import codigo.Grafo;
+import codigo.Vertice;
 
 class GrafoTeste {
 
 	Grafo grafo;
-
+    
     @BeforeEach
-    void init() {
-        grafo = new Grafo("Grafo de Teste");
-        grafo.addVertice(1);
-        grafo.addVertice(2);
-        grafo.addVertice(3);
-        grafo.addVertice(4);
-        grafo.addAresta(1, 2, 1);
-        grafo.addAresta(2, 3, 2);
-        grafo.addAresta(3, 4, 3);
+    void setUp() throws Exception {
+        grafo = new Grafo("Grafo Teste");
+        Vertice v1 = new Vertice(1);
+        Vertice v2 = new Vertice(2);
+        Vertice v3 = new Vertice(3);
+        grafo.getVertices().add(v1);
+        grafo.getVertices().add(v2);
+        grafo.getVertices().add(v3);
+        v1.addAresta(1, 1);
+        v1.addAresta(2, 1);
+        v2.addAresta(3, 1);
     }
 
-    @Nested
-    @DisplayName("Testes dos métodos de vértices")
-    class TestesVertices {
-
-        @Test
-        @DisplayName("Teste do método addVertice")
-        void testandoAdicionarVertice() {
-            assertTrue(grafo.addVertice(5));
-            assertFalse(grafo.addVertice(2));
-        }
-
-//        @Test
-//        @DisplayName("Teste do método removeVertice")
-//        void testandoRemoveVertice() {
-//        	grafo.addVertice(1);
-//            assertEquals(1, grafo.removeVertice(1));
-//        }
-
-        @Test
-        @DisplayName("Teste do método existeVertice")
-        void testandoExisteVertice() {
-            assertNotNull(grafo.existeVertice(2));
-            assertNull(grafo.existeVertice(5));
-        }
-
+    @Test
+    void testNome() {
+        assertEquals("Grafo Teste", grafo.nome());
     }
-    @Nested
-    @DisplayName("Testes dos métodos de arestas")
-    class TestesArestas {
-
-        @Test
-        @DisplayName("Teste do método addAresta")
-        void testandoAddAresta() {
-            assertTrue(grafo.addAresta(2, 4, 2));
-            assertFalse(grafo.addAresta(2, 5, 1));
-            assertFalse(grafo.addAresta(5, 6, 3));
-        }
-
-        @Test
-        @DisplayName("Teste do método existeAresta")
-        void testandoExisteAresta() {
-            assertNull(grafo.existeAresta(2, 4));
-        }
-
+    
+    @Test
+    void testExisteVertice() {
+        assertNotNull(grafo.existeVertice(1));
+        assertNull(grafo.existeVertice(4));
     }
-
-    @Nested
-    @DisplayName("Testes dos métodos de grafos")
-    class TestesGrafo {
-
-        @Test
-        @DisplayName("Teste do método completo")
-        void testCompleto() {
-             grafo.addAresta(1, 3, 1);
-             grafo.addAresta(1, 4, 1);
-             grafo.addAresta(2, 4, 1);
-             assertTrue(grafo.completo());
-        }
+    
+    @Test
+    void testExisteAresta() {
+        assertNotNull(grafo.existeAresta(1, 2));
+        assertNotNull(grafo.existeAresta(1, 3));
+        assertNotNull(grafo.existeAresta(2, 3));
+        assertNull(grafo.existeAresta(1, 4));
+    }
+    
+    @Test
+    void testTamanho() {
+        assertEquals(3, grafo.tamanho());
+        
+        Vertice v4 = new Vertice(4);
+        
+        v4.addAresta(4, 1);
+        assertEquals(4, grafo.tamanho());
+    }
+    
+    @Test
+    void testOrdem() {
+        assertEquals(3, grafo.ordem());
+        grafo.getVertices().add(new Vertice(4));
+        assertEquals(4, grafo.ordem());
+    }
+    
+    @Test
+    void testBuscaProfundidade() {
+        List<Integer> listaEsperada = new ArrayList<>();
+        listaEsperada.add(1);
+        listaEsperada.add(2);
+        listaEsperada.add(3);
+        assertEquals(listaEsperada, grafo.buscaProfundidade(1));
     }
 }

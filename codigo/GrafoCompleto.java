@@ -1,7 +1,6 @@
 package codigo;
 
 public class GrafoCompleto extends Grafo {
-	private int ordem;
 
 	/**
 	 * Construtor que cria um Grafo Completo
@@ -11,14 +10,16 @@ public class GrafoCompleto extends Grafo {
 	 */
 	public GrafoCompleto(String nome, int ordem) {
 		super(nome);
-
-		for (int i = 1; i <= ordem; i++) {
-			addVertice(i);
+		int i, j;
+		for (i = 1; i <= ordem; i++) {
+			Vertice novo = new Vertice(i);
+			this.vertices.add(i, novo);
 		}
-
-		for (int i = 1; i <= ordem; i++) {
-			for (int j = i + 1; j <= ordem; j++) {
-				addAresta(i, j, 1);
+		for (i = 1; i <= ordem; i++) {
+			for (j = 1; j <= ordem; j++) {
+				if (i != j) {
+					this.vertices.find(i).addAresta(j);
+				}
 			}
 		}
 	}
