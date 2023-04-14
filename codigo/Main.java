@@ -24,7 +24,7 @@ public class Main {
 			case 1:
 				System.out.println("Digite a ordem");
 				int ordem = scanner.nextInt();
-				Grafo grafo = new GrafoCompleto("Grafo completo de ordem 4", ordem);
+				Grafo grafo = new GrafoCompleto("Grafo completo", ordem);
 				for (Vertice v : grafo.getVertices()) {
 					System.out.print(v.getId() + ": ");
 					List<String> verticesAdjacentes = new ArrayList<>();
