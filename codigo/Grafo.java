@@ -34,7 +34,6 @@ import java.util.List;
 public class Grafo {
 	public final String nome;
 	ABB<Vertice> vertices;
-	ABB<Aresta> arestas;
 
 	public static Grafo grafoCompleto(int ordem) {
 		return null;
