@@ -34,11 +34,11 @@ import java.util.List;
 public class Grafo {
 	public final String nome;
 	ABB<Vertice> vertices;
+	ABB<Aresta> arestas;
 
 	public static Grafo grafoCompleto(int ordem) {
 		return null;
 	}
-
 	/**
 	 * Construtor que cria um grafo passando o seu nome por parametro
 	 * 
@@ -133,7 +133,11 @@ public class Grafo {
 	public int ordem() {
 		return this.vertices.size();
 	}
-	
+	/**
+	 * Método que faz a Busca em Profundidade em um Grafo
+	 * @param id
+	 * @return
+	 */
 	public List<Integer> buscaProfundidade(int id){
 	    List<Integer> listId = new ArrayList<Integer>();
 	    if(this.vertices.find(id).visitado()!=true){

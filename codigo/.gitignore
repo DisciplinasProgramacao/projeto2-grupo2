@@ -6,3 +6,6 @@
 /Vertice.class
 /GrafoCompleto.class
 /GrafoMutavel.class
+/GrafoPonderado.class
+/GrafoDirecionado.class
+/GrafoNaoDirecionado.class

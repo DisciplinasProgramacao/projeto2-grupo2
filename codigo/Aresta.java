@@ -29,6 +29,7 @@ public class Aresta {
     private int peso;
     private int destino;
     private boolean visitada;
+    private int origem;
 
     /**
      * Construtor para arestas com peso. A aresta é criada como não-visitada.
@@ -45,7 +46,12 @@ public class Aresta {
         this.destino = destino;
         this.visitada = false;
     }
-
+    
+    public Aresta(int origem, int destino, int peso){
+        this.origem = origem;
+        this.destino = destino;
+        this.peso = peso;
+    }
     /**
      * Método de acesso para o peso da aresta
      * @return Peso da aresta (int)
@@ -83,6 +89,24 @@ public class Aresta {
     public boolean visitada(){
         return this.visitada;
     }
+    
+    /**
+     * Getters e Setters
+     * @return
+     */
+	public int getDestino() {
+		return destino;
+	}
+	public void setDestino(int destino) {
+		this.destino = destino;
+	}
+	public int getOrigem() {
+		return origem;
+	}
+	public void setOrigem(int origem) {
+		this.origem = origem;
+	}
+    
 
     
 

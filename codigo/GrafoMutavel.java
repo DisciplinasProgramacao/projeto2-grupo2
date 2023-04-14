@@ -59,6 +59,12 @@ public class GrafoMutavel extends Grafo {
         return adicionou;
 
     }
+    /**
+     * Método que remove Aresta
+     * @param origem
+     * @param destino
+     * @return
+     */
     public Aresta removeAresta(int origem, int destino) {
         Vertice vOrigem = existeVertice(origem);
         Vertice vDestino = existeVertice(destino);
@@ -104,8 +110,6 @@ public class GrafoMutavel extends Grafo {
     public void salvar(String nomeArquivo) throws IOException {
         int i,j;
         FileWriter writer = new FileWriter(nomeArquivo);
-        writer.write(Integer.toString(ordem()));
-        writer.write("\n");
         Vertice[] arrayvertices = this.vertices.allElements(new Vertice[this.vertices.size()]);
         for(i=0;i<=this.vertices.size();i++){
             for(j=i+1;j<this.vertices.size();j++){

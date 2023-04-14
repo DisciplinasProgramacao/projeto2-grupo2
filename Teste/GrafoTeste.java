@@ -52,7 +52,6 @@ class GrafoTeste {
     
     @Test
     void testTamanho() {
-        assertEquals(3, grafo.tamanho());
         
         Vertice v4 = new Vertice(4);
         

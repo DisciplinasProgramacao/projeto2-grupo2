@@ -63,7 +63,11 @@ public class Vertice {
         return this.arestas.add(destino,new Aresta(peso, destino));
     }
 
-    
+    /**
+     * Verifica se existe aresta
+     * @param destino
+     * @return
+     */
     public Aresta existeAresta(int destino){
         return this.arestas.find(destino);
 
@@ -82,7 +86,11 @@ public class Vertice {
     public ABB<Aresta> getArestas() {
 		return arestas;
 	}
-
+    
+    /**
+     * Método que retorna o grau do vértice
+     * @return
+     */
 	public int grau(){
         return this.arestas.size();
     }
